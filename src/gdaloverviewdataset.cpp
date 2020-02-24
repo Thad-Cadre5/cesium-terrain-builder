@@ -87,11 +87,11 @@ class GDALOverviewDataset : public GDALDataset
                          int bThisLevelOnly );
     ~GDALOverviewDataset() override;
 
-    const char *GetProjectionRef( void ) override;
-    CPLErr GetGeoTransform( double * ) override;
+    const char *GetProjectionRef( void );
+    CPLErr GetGeoTransform( double * );
 
     int GetGCPCount() override;
-    const char *GetGCPProjection() override;
+    const char *GetGCPProjection();
     const GDAL_GCP *GetGCPs() override;
 
     char  **GetMetadata( const char * pszDomain = "" ) override;
@@ -348,7 +348,6 @@ CPLErr GDALOverviewDataset::IRasterIO( GDALRWFlag eRWFlag,
 /************************************************************************/
 
 const char *GDALOverviewDataset::GetProjectionRef()
-
 {
     return poMainDS->GetProjectionRef();
 }
